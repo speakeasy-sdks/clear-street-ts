@@ -7,8 +7,9 @@ management:
 generation:
   telemetryEnabled: false
   sdkClassName: SDK
+  sdkFlattening: true
   singleTagPerOp: false
 typescript:
-  version: 1.0.0
+  version: ""
   author: Clear Street
   packageName: clear-street

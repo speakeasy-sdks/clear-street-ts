@@ -32,7 +32,7 @@ const req: CancelTradesRequest = {
   tradeId: "provident",
 };
 
-sdk.trades.cancelTrades(req).then((res: CancelTradesResponse | AxiosError) => {
+sdk.trades.cancel(req).then((res: CancelTradesResponse | AxiosError) => {
   if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
     // handle response
   }
@@ -46,14 +46,14 @@ sdk.trades.cancelTrades(req).then((res: CancelTradesResponse | AxiosError) => {
 
 ### [trades](docs/trades/README.md)
 
-* [cancelTrades](docs/trades/README.md#canceltrades) - Cancel Trade By ID
-* [createTrades](docs/trades/README.md#createtrades) - Insert Trades
+* [cancel](docs/trades/README.md#cancel) - Cancel Trade By ID
+* [create](docs/trades/README.md#create) - Insert Trades
 
 ### [uploads](docs/uploads/README.md)
 
-* [cancelUploads](docs/uploads/README.md#canceluploads) - Create_Uploads
-* [getByIdUploads](docs/uploads/README.md#getbyiduploads) - Get Upload By ID
-* [uploadsInsertCreate](docs/uploads/README.md#uploadsinsertcreate) - Create Insert Upload
+* [cancel](docs/uploads/README.md#cancel) - Create_Uploads
+* [create](docs/uploads/README.md#create) - Create Insert Upload
+* [getById](docs/uploads/README.md#getbyid) - Get Upload By ID
 <!-- End SDK Available Operations -->
 
 ### Maturity

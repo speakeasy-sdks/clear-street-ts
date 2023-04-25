@@ -50,7 +50,7 @@ export class Uploads {
    *   by_client_id	false
    *
    */
-  cancelUploads(
+  cancel(
     req: operations.CancelUploadsRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CancelUploadsResponse> {
@@ -116,63 +116,6 @@ export class Uploads {
   }
 
   /**
-   * Get Upload By ID
-   *
-   * @remarks
-   * Get an existing upload. Use this endpoint when you want to the know the status of a previously created upload.
-   *
-   */
-  getByIdUploads(
-    req: operations.GetByIdUploadsRequest,
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetByIdUploadsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GetByIdUploadsRequest(req);
-    }
-
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(baseURL, "/uploads/{upload_id}", req);
-
-    const client: AxiosInstance = this._defaultClient;
-
-    const r = client.request({
-      url: url,
-      method: "get",
-      ...config,
-    });
-
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetByIdUploadsResponse =
-        new operations.GetByIdUploadsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadStatus = utils.objectToClass(
-              httpRes?.data,
-              shared.UploadStatus
-            );
-          }
-          break;
-        case httpRes?.status == 404:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
-
-      return res;
-    });
-  }
-
-  /**
    * Create Insert Upload
    *
    * @remarks
@@ -183,7 +126,7 @@ export class Uploads {
    * Our [trade-file specification](https://github.com/clear-street/docs/blob/master/trade_file.md) has more details. You can also download an example file.
    *
    */
-  uploadsInsertCreate(
+  create(
     req: operations.UploadsInsertCreateRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadsInsertCreateResponse> {
@@ -238,6 +181,62 @@ export class Uploads {
           }
           break;
         case [400, 409, 500].includes(httpRes?.status):
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+          }
+          break;
+      }
+
+      return res;
+    });
+  }
+
+  /**
+   * Get Upload By ID
+   *
+   * @remarks
+   * Get an existing upload. Use this endpoint when you want to the know the status of a previously created upload.
+   *
+   */
+  getById(
+    req: operations.GetByIdRequest,
+    config?: AxiosRequestConfig
+  ): Promise<operations.GetByIdResponse> {
+    if (!(req instanceof utils.SpeakeasyBase)) {
+      req = new operations.GetByIdRequest(req);
+    }
+
+    const baseURL: string = this._serverURL;
+    const url: string = utils.generateURL(baseURL, "/uploads/{upload_id}", req);
+
+    const client: AxiosInstance = this._defaultClient;
+
+    const r = client.request({
+      url: url,
+      method: "get",
+      ...config,
+    });
+
+    return r.then((httpRes: AxiosResponse) => {
+      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+      if (httpRes?.status == null)
+        throw new Error(`status code not found in response: ${httpRes}`);
+      const res: operations.GetByIdResponse = new operations.GetByIdResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+      switch (true) {
+        case httpRes?.status == 200:
+          if (utils.matchContentType(contentType, `application/json`)) {
+            res.uploadStatus = utils.objectToClass(
+              httpRes?.data,
+              shared.UploadStatus
+            );
+          }
+          break;
+        case httpRes?.status == 404:
           if (utils.matchContentType(contentType, `application/json`)) {
             res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
           }

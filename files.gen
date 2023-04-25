@@ -22,8 +22,8 @@ tsconfig.json
 src/sdk/models/operations/canceltrades.ts
 src/sdk/models/operations/createtrades.ts
 src/sdk/models/operations/canceluploads.ts
-src/sdk/models/operations/getbyiduploads.ts
 src/sdk/models/operations/uploadsinsertcreate.ts
+src/sdk/models/operations/getbyid.ts
 src/sdk/models/operations/index.ts
 src/sdk/models/shared/error.ts
 src/sdk/models/shared/tradesubmitted.ts

@@ -5,5 +5,5 @@
 export * from "./canceltrades";
 export * from "./canceluploads";
 export * from "./createtrades";
-export * from "./getbyiduploads";
+export * from "./getbyid";
 export * from "./uploadsinsertcreate";

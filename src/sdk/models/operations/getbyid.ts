@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
-export class GetByIdUploadsRequest extends SpeakeasyBase {
+export class GetByIdRequest extends SpeakeasyBase {
   /**
    * upload_id that identifies a previously created upload
    */
@@ -16,7 +16,7 @@ export class GetByIdUploadsRequest extends SpeakeasyBase {
   uploadId: string;
 }
 
-export class GetByIdUploadsResponse extends SpeakeasyBase {
+export class GetByIdResponse extends SpeakeasyBase {
   @SpeakeasyMetadata()
   contentType: string;
 

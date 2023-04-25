@@ -44,7 +44,7 @@ export class Trades {
    * Cancel a trade either by the Clear Street assigned `trade_id`, or `client_trade_id` that was provided in the original trade. If the ID you provide is, in fact, a `client_trade_id`, you must set `is_client_trade_id` to true, and also provide the `account_id` for the original trade.
    *
    */
-  cancelTrades(
+  cancel(
     req: operations.CancelTradesRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CancelTradesResponse> {
@@ -116,7 +116,7 @@ export class Trades {
    * The fields below vary depending upon trade-type. Change the value of the `type` drop-down below to switch between trade-types.
    *
    */
-  createTrades(
+  create(
     req: shared.Trade[],
     config?: AxiosRequestConfig
   ): Promise<operations.CreateTradesResponse> {

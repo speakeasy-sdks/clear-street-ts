@@ -7,10 +7,10 @@ Trade endpoints are used to insert or cancel trades into a our systems.
 
 ### Available Operations
 
-* [cancelTrades](#canceltrades) - Cancel Trade By ID
-* [createTrades](#createtrades) - Insert Trades
+* [cancel](#cancel) - Cancel Trade By ID
+* [create](#create) - Insert Trades
 
-## cancelTrades
+## cancel
 
 Cancel a trade either by the Clear Street assigned `trade_id`, or `client_trade_id` that was provided in the original trade. If the ID you provide is, in fact, a `client_trade_id`, you must set `is_client_trade_id` to true, and also provide the `account_id` for the original trade.
 
@@ -31,14 +31,14 @@ const req: CancelTradesRequest = {
   tradeId: "quibusdam",
 };
 
-sdk.trades.cancelTrades(req).then((res: CancelTradesResponse | AxiosError) => {
+sdk.trades.cancel(req).then((res: CancelTradesResponse | AxiosError) => {
   if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
     // handle response
   }
 });
 ```
 
-## createTrades
+## create
 
 Insert the provided trades atomically. Use this endpoint if you want atomicity and immediate confirmation; this request will either fully process all your trades, or reject them all atomically. Therefore, a successful call to this endpoint guarantees that your trades have been accepted by our systems. This endpoint can accept up to 1000 trades at a time. 
 Exchange Trade  trades done directly on an
@@ -191,7 +191,7 @@ const req: . = [
   },
 ];
 
-sdk.trades.createTrades(req).then((res: CreateTradesResponse | AxiosError) => {
+sdk.trades.create(req).then((res: CreateTradesResponse | AxiosError) => {
   if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
     // handle response
   }

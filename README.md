@@ -6,13 +6,13 @@
 ### NPM
 
 ```bash
-npm add https://github.com/speakeasy-sdks/clear-street-ts
+npm add clear-street
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/speakeasy-sdks/clear-street-ts
+yarn add clear-street
 ```
 <!-- End SDK Installation -->
 

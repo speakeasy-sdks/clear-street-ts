@@ -15,13 +15,13 @@
 ### NPM
 
 ```bash
-npm add clear-street
+npm add https://github.com/speakeasy-sdks/clear-street-ts
 ```
 
 ### Yarn
 
 ```bash
-yarn add clear-street
+yarn add https://github.com/speakeasy-sdks/clear-street-ts
 ```
 <!-- End SDK Installation -->
 
@@ -29,11 +29,11 @@ yarn add clear-street
 <!-- Start SDK Example Usage -->
 ```typescript
 import { AxiosError } from "axios";
-import { SDK } from "clear-street";
-import { CancelTradesRequest, CancelTradesResponse } from "clear-street/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clear-street/dist/sdk/models/shared";
+import { ClearStreet } from "clearStreet";
+import { CancelTradesRequest, CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
+import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
-const sdk = new SDK();
+const sdk = new ClearStreet();
 
 const req: CancelTradesRequest = {
   accountId: 548814,

@@ -1,6 +1,6 @@
 {
-  "name": "clear-street",
-  "version": "0.0.2",
+  "name": "clearStreet",
+  "version": "0.0.3",
   "author": "Clear Street",
   "scripts": {
     "prepare": "tsc --build"

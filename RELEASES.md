@@ -19,3 +19,9 @@ Based on:
 - Speakeasy CLI 1.24.0 (2.21.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [NPM v0.0.2] https://www.npmjs.com/package/clear-street/v/0.0.2 - .
+
+## 2023-04-26 09:44:47
+### Changes
+Based on:
+- OpenAPI Doc 0.0.3 
+- Speakeasy CLI 1.24.0 (2.21.2) https://github.com/speakeasy-api/speakeasy

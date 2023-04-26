@@ -1,4 +1,4 @@
-# SDK
+# ClearStreet SDK
 
 ## Overview
 

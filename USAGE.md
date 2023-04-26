@@ -13,7 +13,7 @@ const req: CancelTradesRequest = {
   tradeId: "provident",
 };
 
-sdk.trades.cancelTrades(req).then((res: CancelTradesResponse | AxiosError) => {
+sdk.trades.cancel(req).then((res: CancelTradesResponse | AxiosError) => {
   if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
     // handle response
   }

@@ -7,11 +7,11 @@ Upload endpoints allow you to upload a `CSV` file that contain trades, in the sa
 
 ### Available Operations
 
-* [cancelUploads](#canceluploads) - Create_Uploads
-* [getByIdUploads](#getbyiduploads) - Get Upload By ID
-* [uploadsInsertCreate](#uploadsinsertcreate) - Create Insert Upload
+* [cancel](#cancel) - Create_Uploads
+* [create](#create) - Create Insert Upload
+* [getById](#getbyid) - Get Upload By ID
 
-## cancelUploads
+## cancel
 
 Upload the provided CSV file for processing cancels asynchronously.
 
@@ -39,40 +39,14 @@ const req: CancelUploadsRequestBody = {
   },
 };
 
-sdk.uploads.cancelUploads(req).then((res: CancelUploadsResponse | AxiosError) => {
+sdk.uploads.cancel(req).then((res: CancelUploadsResponse | AxiosError) => {
   if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
     // handle response
   }
 });
 ```
 
-## getByIdUploads
-
-Get an existing upload. Use this endpoint when you want to the know the status of a previously created upload.
-
-
-### Example Usage
-
-```typescript
-import { AxiosError } from "axios";
-import { SDK } from "clear-street";
-import { GetByIdUploadsRequest, GetByIdUploadsResponse } from "clear-street/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clear-street/dist/sdk/models/shared";
-
-const sdk = new SDK();
-
-const req: GetByIdUploadsRequest = {
-  uploadId: "hic",
-};
-
-sdk.uploads.getByIdUploads(req).then((res: GetByIdUploadsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-## uploadsInsertCreate
+## create
 
 Upload the provided CSV file for processing asynchronously. Your file will be uploaded to our servers, and then subsequently processed.
 
@@ -93,12 +67,38 @@ const sdk = new SDK();
 
 const req: UploadsInsertCreateRequestBody = {
   file: {
-    content: "optio".encode(),
-    file: "totam",
+    content: "hic".encode(),
+    file: "optio",
   },
 };
 
-sdk.uploads.uploadsInsertCreate(req).then((res: UploadsInsertCreateResponse | AxiosError) => {
+sdk.uploads.create(req).then((res: UploadsInsertCreateResponse | AxiosError) => {
+  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+## getById
+
+Get an existing upload. Use this endpoint when you want to the know the status of a previously created upload.
+
+
+### Example Usage
+
+```typescript
+import { AxiosError } from "axios";
+import { SDK } from "clear-street";
+import { GetByIdRequest, GetByIdResponse } from "clear-street/dist/sdk/models/operations";
+import { ErrorTypeEnum } from "clear-street/dist/sdk/models/shared";
+
+const sdk = new SDK();
+
+const req: GetByIdRequest = {
+  uploadId: "totam",
+};
+
+sdk.uploads.getById(req).then((res: GetByIdResponse | AxiosError) => {
   if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
     // handle response
   }

@@ -6,9 +6,9 @@ management:
   generationVersion: 2.21.2
 generation:
   telemetryEnabled: false
-  sdkClassName: SDK
+  sdkClassName: clearStreet
   singleTagPerOp: false
 typescript:
   version: 0.0.2
   author: Clear Street
-  packageName: clear-street
+  packageName: clearStreet

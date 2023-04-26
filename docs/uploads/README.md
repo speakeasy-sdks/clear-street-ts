@@ -26,11 +26,11 @@ Example column headers with associated example values:
 
 ```typescript
 import { AxiosError } from "axios";
-import { SDK } from "clear-street";
-import { CancelUploadsRequestBody, CancelUploadsResponse } from "clear-street/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clear-street/dist/sdk/models/shared";
+import { ClearStreet } from "clearStreet";
+import { CancelUploadsRequestBody, CancelUploadsResponse } from "clearStreet/dist/sdk/models/operations";
+import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
-const sdk = new SDK();
+const sdk = new ClearStreet();
 
 const req: CancelUploadsRequestBody = {
   file: {
@@ -59,11 +59,11 @@ Our [trade-file specification](https://github.com/clear-street/docs/blob/master/
 
 ```typescript
 import { AxiosError } from "axios";
-import { SDK } from "clear-street";
-import { UploadsInsertCreateRequestBody, UploadsInsertCreateResponse } from "clear-street/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clear-street/dist/sdk/models/shared";
+import { ClearStreet } from "clearStreet";
+import { UploadsInsertCreateRequestBody, UploadsInsertCreateResponse } from "clearStreet/dist/sdk/models/operations";
+import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
-const sdk = new SDK();
+const sdk = new ClearStreet();
 
 const req: UploadsInsertCreateRequestBody = {
   file: {
@@ -88,11 +88,11 @@ Get an existing upload. Use this endpoint when you want to the know the status o
 
 ```typescript
 import { AxiosError } from "axios";
-import { SDK } from "clear-street";
-import { GetByIdRequest, GetByIdResponse } from "clear-street/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clear-street/dist/sdk/models/shared";
+import { ClearStreet } from "clearStreet";
+import { GetByIdRequest, GetByIdResponse } from "clearStreet/dist/sdk/models/operations";
+import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
-const sdk = new SDK();
+const sdk = new ClearStreet();
 
 const req: GetByIdRequest = {
   uploadId: "totam",

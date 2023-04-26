@@ -103,7 +103,7 @@ export type SDKProps = {
  * requests.post(url=URL, headers=headers, json=payload) ```
  *
  */
-export class SDK {
+export class ClearStreet {
   /**
    * Trade endpoints are used to insert or cancel trades into a our systems.
    *
@@ -123,7 +123,7 @@ export class SDK {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.0.2";
+  private _sdkVersion = "0.0.3";
   private _genVersion = "2.21.2";
   private _globals: any;
 

@@ -34,7 +34,7 @@ src/sdk/models/shared/instrument.ts
 src/sdk/models/shared/upload.ts
 src/sdk/models/shared/uploadstatus.ts
 src/sdk/models/shared/index.ts
-docs/sdk/README.md
+docs/clearstreet/README.md
 docs/trades/README.md
 docs/uploads/README.md
 USAGE.md

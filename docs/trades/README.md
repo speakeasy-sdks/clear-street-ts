@@ -19,11 +19,11 @@ Cancel a trade either by the Clear Street assigned `trade_id`, or `client_trade_
 
 ```typescript
 import { AxiosError } from "axios";
-import { SDK } from "clear-street";
-import { CancelTradesRequest, CancelTradesResponse } from "clear-street/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clear-street/dist/sdk/models/shared";
+import { ClearStreet } from "clearStreet";
+import { CancelTradesRequest, CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
+import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
-const sdk = new SDK();
+const sdk = new ClearStreet();
 
 const req: CancelTradesRequest = {
   accountId: 715190,
@@ -66,8 +66,8 @@ The fields below vary depending upon trade-type. Change the value of the `type` 
 
 ```typescript
 import { AxiosError } from "axios";
-import { SDK } from "clear-street";
-import { , CreateTradesResponse } from "clear-street/dist/sdk/models/operations";
+import { ClearStreet } from "clearStreet";
+import { , CreateTradesResponse } from "clearStreet/dist/sdk/models/operations";
 import {
   ErrorTypeEnum,
   InstrumentIdentifierTypeEnum,
@@ -75,9 +75,9 @@ import {
   SidePositionEnum,
   SideQualifierEnum,
   TradeTypeEnum,
-} from "clear-street/dist/sdk/models/shared";
+} from "clearStreet/dist/sdk/models/shared";
 
-const sdk = new SDK();
+const sdk = new ClearStreet();
 
 const req: . = [
   {

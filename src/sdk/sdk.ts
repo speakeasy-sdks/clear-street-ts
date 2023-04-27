@@ -123,8 +123,8 @@ export class ClearStreet {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "0.0.3";
-  private _genVersion = "2.21.2";
+  private _sdkVersion = "0.1.0";
+  private _genVersion = "2.22.0";
   private _globals: any;
 
   constructor(props?: SDKProps) {

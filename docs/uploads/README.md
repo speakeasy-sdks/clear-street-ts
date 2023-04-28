@@ -25,22 +25,19 @@ Example column headers with associated example values:
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { ClearStreet } from "clearStreet";
-import { CancelUploadsRequestBody, CancelUploadsResponse } from "clearStreet/dist/sdk/models/operations";
+import { CancelUploadsResponse } from "clearStreet/dist/sdk/models/operations";
 import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
-const req: CancelUploadsRequestBody = {
+sdk.uploads.cancel({
   file: {
     content: "fugit".encode(),
     file: "deleniti",
   },
-};
-
-sdk.uploads.cancel(req).then((res: CancelUploadsResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CancelUploadsResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -58,22 +55,19 @@ Our [trade-file specification](https://github.com/clear-street/docs/blob/master/
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { ClearStreet } from "clearStreet";
-import { UploadsInsertCreateRequestBody, UploadsInsertCreateResponse } from "clearStreet/dist/sdk/models/operations";
+import { UploadsInsertCreateResponse } from "clearStreet/dist/sdk/models/operations";
 import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
-const req: UploadsInsertCreateRequestBody = {
+sdk.uploads.create({
   file: {
     content: "hic".encode(),
     file: "optio",
   },
-};
-
-sdk.uploads.create(req).then((res: UploadsInsertCreateResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: UploadsInsertCreateResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -87,19 +81,16 @@ Get an existing upload. Use this endpoint when you want to the know the status o
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { ClearStreet } from "clearStreet";
-import { GetByIdRequest, GetByIdResponse } from "clearStreet/dist/sdk/models/operations";
+import { GetByIdResponse } from "clearStreet/dist/sdk/models/operations";
 import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
-const req: GetByIdRequest = {
+sdk.uploads.getById({
   uploadId: "totam",
-};
-
-sdk.uploads.getById(req).then((res: GetByIdResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: GetByIdResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

@@ -44,7 +44,7 @@ export class Trades {
    * Cancel a trade either by the Clear Street assigned `trade_id`, or `client_trade_id` that was provided in the original trade. If the ID you provide is, in fact, a `client_trade_id`, you must set `is_client_trade_id` to true, and also provide the `account_id` for the original trade.
    *
    */
-  cancel(
+  async cancel(
     req: operations.CancelTradesRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.CancelTradesResponse> {
@@ -59,35 +59,36 @@ export class Trades {
 
     const queryParams: string = utils.serializeQueryParams(req);
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url + queryParams,
       method: "delete",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CancelTradesResponse =
-        new operations.CancelTradesResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 202:
-          break;
-        case [400, 409, 500].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CancelTradesResponse =
+      new operations.CancelTradesResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 202:
+        break;
+      case [400, 409, 500].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -116,7 +117,7 @@ export class Trades {
    * The fields below vary depending upon trade-type. Change the value of the `type` drop-down below to switch between trade-types.
    *
    */
-  create(
+  async create(
     req: shared.Trade[],
     config?: AxiosRequestConfig
   ): Promise<operations.CreateTradesResponse> {
@@ -143,7 +144,8 @@ export class Trades {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -151,37 +153,37 @@ export class Trades {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CreateTradesResponse =
-        new operations.CreateTradesResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 202:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.tradeSubmitteds = [];
-            const resFieldDepth: number = utils.getResFieldDepth(res);
-            res.tradeSubmitteds = utils.objectToClass(
-              httpRes?.data,
-              shared.TradeSubmitted,
-              resFieldDepth
-            );
-          }
-          break;
-        case [400, 422, 500].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CreateTradesResponse =
+      new operations.CreateTradesResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 202:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.tradeSubmitteds = [];
+          const resFieldDepth: number = utils.getResFieldDepth(res);
+          res.tradeSubmitteds = utils.objectToClass(
+            httpRes?.data,
+            shared.TradeSubmitted,
+            resFieldDepth
+          );
+        }
+        break;
+      case [400, 422, 500].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 }

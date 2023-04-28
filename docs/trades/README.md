@@ -18,21 +18,18 @@ Cancel a trade either by the Clear Street assigned `trade_id`, or `client_trade_
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { ClearStreet } from "clearStreet";
-import { CancelTradesRequest, CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
+import { CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
 import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
-const req: CancelTradesRequest = {
+sdk.trades.cancel({
   accountId: 715190,
   isClientTradeId: false,
   tradeId: "quibusdam",
-};
-
-sdk.trades.cancel(req).then((res: CancelTradesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CancelTradesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });
@@ -65,9 +62,8 @@ The fields below vary depending upon trade-type. Change the value of the `type` 
 ### Example Usage
 
 ```typescript
-import { AxiosError } from "axios";
 import { ClearStreet } from "clearStreet";
-import { , CreateTradesResponse } from "clearStreet/dist/sdk/models/operations";
+import { CreateTradesResponse } from "clearStreet/dist/sdk/models/operations";
 import {
   ErrorTypeEnum,
   InstrumentIdentifierTypeEnum,
@@ -79,7 +75,7 @@ import {
 
 const sdk = new ClearStreet();
 
-const req: . = [
+sdk.trades.create([
   {
     accountId: 1002,
     behalfOfAccountId: 1002,
@@ -189,10 +185,8 @@ const req: . = [
       "officia": "occaecati",
     },
   },
-];
-
-sdk.trades.create(req).then((res: CreateTradesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+]).then((res: CreateTradesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

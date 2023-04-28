@@ -50,7 +50,7 @@ export class Uploads {
    *   by_client_id	false
    *
    */
-  cancel(
+  async cancel(
     req: operations.CancelUploadsRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.CancelUploadsResponse> {
@@ -79,7 +79,8 @@ export class Uploads {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -87,32 +88,32 @@ export class Uploads {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.CancelUploadsResponse =
-        new operations.CancelUploadsResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 202:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.upload = utils.objectToClass(httpRes?.data, shared.Upload);
-          }
-          break;
-        case [400, 409, 500].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.CancelUploadsResponse =
+      new operations.CancelUploadsResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 202:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.upload = utils.objectToClass(httpRes?.data, shared.Upload);
+        }
+        break;
+      case [400, 409, 500].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -126,7 +127,7 @@ export class Uploads {
    * Our [trade-file specification](https://github.com/clear-street/docs/blob/master/trade_file.md) has more details. You can also download an example file.
    *
    */
-  create(
+  async create(
     req: operations.UploadsInsertCreateRequestBody,
     config?: AxiosRequestConfig
   ): Promise<operations.UploadsInsertCreateResponse> {
@@ -155,7 +156,8 @@ export class Uploads {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "post",
       headers: headers,
@@ -163,32 +165,32 @@ export class Uploads {
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.UploadsInsertCreateResponse =
-        new operations.UploadsInsertCreateResponse({
-          statusCode: httpRes.status,
-          contentType: contentType,
-          rawResponse: httpRes,
-        });
-      switch (true) {
-        case httpRes?.status == 202:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.upload = utils.objectToClass(httpRes?.data, shared.Upload);
-          }
-          break;
-        case [400, 409, 500].includes(httpRes?.status):
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
-    });
+    const res: operations.UploadsInsertCreateResponse =
+      new operations.UploadsInsertCreateResponse({
+        statusCode: httpRes.status,
+        contentType: contentType,
+        rawResponse: httpRes,
+      });
+    switch (true) {
+      case httpRes?.status == 202:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.upload = utils.objectToClass(httpRes?.data, shared.Upload);
+        }
+        break;
+      case [400, 409, 500].includes(httpRes?.status):
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 
   /**
@@ -198,7 +200,7 @@ export class Uploads {
    * Get an existing upload. Use this endpoint when you want to the know the status of a previously created upload.
    *
    */
-  getById(
+  async getById(
     req: operations.GetByIdRequest,
     config?: AxiosRequestConfig
   ): Promise<operations.GetByIdResponse> {
@@ -211,39 +213,40 @@ export class Uploads {
 
     const client: AxiosInstance = this._defaultClient;
 
-    const r = client.request({
+    const httpRes: AxiosResponse = await client.request({
+      validateStatus: () => true,
       url: url,
       method: "get",
       ...config,
     });
 
-    return r.then((httpRes: AxiosResponse) => {
-      const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-      if (httpRes?.status == null)
-        throw new Error(`status code not found in response: ${httpRes}`);
-      const res: operations.GetByIdResponse = new operations.GetByIdResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-      switch (true) {
-        case httpRes?.status == 200:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.uploadStatus = utils.objectToClass(
-              httpRes?.data,
-              shared.UploadStatus
-            );
-          }
-          break;
-        case httpRes?.status == 404:
-          if (utils.matchContentType(contentType, `application/json`)) {
-            res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
-          }
-          break;
-      }
+    if (httpRes?.status == null) {
+      throw new Error(`status code not found in response: ${httpRes}`);
+    }
 
-      return res;
+    const res: operations.GetByIdResponse = new operations.GetByIdResponse({
+      statusCode: httpRes.status,
+      contentType: contentType,
+      rawResponse: httpRes,
     });
+    switch (true) {
+      case httpRes?.status == 200:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.uploadStatus = utils.objectToClass(
+            httpRes?.data,
+            shared.UploadStatus
+          );
+        }
+        break;
+      case httpRes?.status == 404:
+        if (utils.matchContentType(contentType, `application/json`)) {
+          res.error = utils.objectToClass(httpRes?.data, shared.ErrorT);
+        }
+        break;
+    }
+
+    return res;
   }
 }

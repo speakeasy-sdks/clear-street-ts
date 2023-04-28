@@ -28,21 +28,18 @@ yarn add https://github.com/speakeasy-sdks/clear-street-ts
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```typescript
-import { AxiosError } from "axios";
 import { ClearStreet } from "clearStreet";
-import { CancelTradesRequest, CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
+import { CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
 import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
-const req: CancelTradesRequest = {
+sdk.trades.cancel({
   accountId: 548814,
   isClientTradeId: false,
   tradeId: "provident",
-};
-
-sdk.trades.cancel(req).then((res: CancelTradesResponse | AxiosError) => {
-  if (res instanceof UsageExamplePostResponse && res.statusCode == 200) {
+}).then((res: CancelTradesResponse) => {
+  if (res.statusCode == 200) {
     // handle response
   }
 });

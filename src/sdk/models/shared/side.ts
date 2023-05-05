@@ -11,7 +11,7 @@ import { Expose } from "class-transformer";
 export enum SideDirectionEnum {
   Buy = "buy",
   Sell = "sell",
-  Null = "null",
+  LessThanNilGreaterThan = "<nil>",
 }
 
 /**
@@ -20,7 +20,7 @@ export enum SideDirectionEnum {
 export enum SidePositionEnum {
   Open = "open",
   Close = "close",
-  Null = "null",
+  LessThanNilGreaterThan = "<nil>",
 }
 
 /**

@@ -27,7 +27,7 @@ Example column headers with associated example values:
 ```typescript
 import { ClearStreet } from "clearStreet";
 import { CancelUploadsResponse } from "clearStreet/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
+import { ErrorType } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
@@ -57,7 +57,7 @@ Our [trade-file specification](https://github.com/clear-street/docs/blob/master/
 ```typescript
 import { ClearStreet } from "clearStreet";
 import { UploadsInsertCreateResponse } from "clearStreet/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
+import { ErrorType } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
@@ -83,7 +83,7 @@ Get an existing upload. Use this endpoint when you want to the know the status o
 ```typescript
 import { ClearStreet } from "clearStreet";
 import { GetByIdResponse } from "clearStreet/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
+import { ErrorType } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 

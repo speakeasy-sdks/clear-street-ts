@@ -2,7 +2,7 @@
 ```typescript
 import { ClearStreet } from "clearStreet";
 import { CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
+import { ErrorType } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 

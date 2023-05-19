@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * Identifier type.
  */
-export enum InstrumentIdentifierTypeEnum {
+export enum InstrumentIdentifierType {
   Ticker = "ticker",
   Cusip = "cusip",
   Isin = "isin",
@@ -45,5 +45,5 @@ export class Instrument extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "identifier_type" })
-  identifierType: InstrumentIdentifierTypeEnum;
+  identifierType: InstrumentIdentifierType;
 }

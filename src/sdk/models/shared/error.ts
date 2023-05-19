@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum ErrorTypeEnum {
+export enum ErrorType {
   Internal = "internal",
   MalformedTrade = "malformed_trade",
   TooManyTrades = "too_many_trades",
@@ -30,5 +30,5 @@ export class ErrorT extends SpeakeasyBase {
 
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type: ErrorTypeEnum;
+  type: ErrorType;
 }

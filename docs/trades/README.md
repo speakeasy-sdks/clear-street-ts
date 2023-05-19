@@ -20,7 +20,7 @@ Cancel a trade either by the Clear Street assigned `trade_id`, or `client_trade_
 ```typescript
 import { ClearStreet } from "clearStreet";
 import { CancelTradesResponse } from "clearStreet/dist/sdk/models/operations";
-import { ErrorTypeEnum } from "clearStreet/dist/sdk/models/shared";
+import { ErrorType } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
 
@@ -65,12 +65,12 @@ The fields below vary depending upon trade-type. Change the value of the `type` 
 import { ClearStreet } from "clearStreet";
 import { CreateTradesResponse } from "clearStreet/dist/sdk/models/operations";
 import {
-  ErrorTypeEnum,
-  InstrumentIdentifierTypeEnum,
-  SideDirectionEnum,
-  SidePositionEnum,
-  SideQualifierEnum,
-  TradeTypeEnum,
+  ErrorType,
+  InstrumentIdentifierType,
+  SideDirection,
+  SidePosition,
+  SideQualifier,
+  TradeType,
 } from "clearStreet/dist/sdk/models/shared";
 
 const sdk = new ClearStreet();
@@ -88,7 +88,7 @@ sdk.trades.create([
       country: "USA",
       currency: "USD",
       identifier: "AAPL",
-      identifierType: InstrumentIdentifierTypeEnum.Sedol,
+      identifierType: InstrumentIdentifierType.Sedol,
     },
     orderId: "vel",
     price: "10.00",
@@ -99,13 +99,13 @@ sdk.trades.create([
       date: 645894,
     },
     side: {
-      direction: SideDirectionEnum.Sell,
-      position: SidePositionEnum.Close,
-      qualifier: SideQualifierEnum.Short,
+      direction: SideDirection.Sell,
+      position: SidePosition.Close,
+      qualifier: SideQualifier.Short,
     },
     solicited: false,
     timestamp: 1545952392000,
-    type: TradeTypeEnum.AllocationTrade,
+    type: TradeType.AllocationTrade,
     userData: {
       "debitis": "ipsa",
       "delectus": "tempora",
@@ -123,7 +123,7 @@ sdk.trades.create([
       country: "USA",
       currency: "USD",
       identifier: "AAPL",
-      identifierType: InstrumentIdentifierTypeEnum.Sedol,
+      identifierType: InstrumentIdentifierType.Sedol,
     },
     orderId: "placeat",
     price: "10.00",
@@ -134,13 +134,13 @@ sdk.trades.create([
       date: 479977,
     },
     side: {
-      direction: SideDirectionEnum.Sell,
-      position: SidePositionEnum.Close,
-      qualifier: SideQualifierEnum.Short,
+      direction: SideDirection.Sell,
+      position: SidePosition.Close,
+      qualifier: SideQualifier.Short,
     },
     solicited: false,
     timestamp: 1545952392000,
-    type: TradeTypeEnum.AllocationTrade,
+    type: TradeType.AllocationTrade,
     userData: {
       "temporibus": "ab",
       "quis": "veritatis",
@@ -160,7 +160,7 @@ sdk.trades.create([
       country: "USA",
       currency: "USD",
       identifier: "AAPL",
-      identifierType: InstrumentIdentifierTypeEnum.Ticker,
+      identifierType: InstrumentIdentifierType.Ticker,
     },
     orderId: "at",
     price: "10.00",
@@ -171,13 +171,13 @@ sdk.trades.create([
       date: 978619,
     },
     side: {
-      direction: SideDirectionEnum.Sell,
-      position: SidePositionEnum.Close,
-      qualifier: SideQualifierEnum.Short,
+      direction: SideDirection.Sell,
+      position: SidePosition.Close,
+      qualifier: SideQualifier.Short,
     },
     solicited: false,
     timestamp: 1545952392000,
-    type: TradeTypeEnum.BilateralTrade,
+    type: TradeType.BilateralTrade,
     userData: {
       "esse": "totam",
       "porro": "dolorum",

@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 /**
  * Trade direction
  */
-export enum SideDirectionEnum {
+export enum SideDirection {
   Buy = "buy",
   Sell = "sell",
   LessThanNilGreaterThan = "<nil>",
@@ -17,7 +17,7 @@ export enum SideDirectionEnum {
 /**
  * Trade position, if any
  */
-export enum SidePositionEnum {
+export enum SidePosition {
   Open = "open",
   Close = "close",
   LessThanNilGreaterThan = "<nil>",
@@ -26,7 +26,7 @@ export enum SidePositionEnum {
 /**
  * Trade qualifier, if any
  */
-export enum SideQualifierEnum {
+export enum SideQualifier {
   Short = "short",
 }
 
@@ -39,19 +39,19 @@ export class Side extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "direction" })
-  direction: SideDirectionEnum;
+  direction: SideDirection;
 
   /**
    * Trade position, if any
    */
   @SpeakeasyMetadata()
   @Expose({ name: "position" })
-  position?: SidePositionEnum;
+  position?: SidePosition;
 
   /**
    * Trade qualifier, if any
    */
   @SpeakeasyMetadata()
   @Expose({ name: "qualifier" })
-  qualifier?: SideQualifierEnum;
+  qualifier?: SideQualifier;
 }

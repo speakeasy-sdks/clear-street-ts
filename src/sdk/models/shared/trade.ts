@@ -11,7 +11,7 @@ import { Expose, Type } from "class-transformer";
 /**
  * Trade type.
  */
-export enum TradeTypeEnum {
+export enum TradeType {
   TransferTrade = "transfer_trade",
   AllocationTrade = "allocation_trade",
   ExchangeTrade = "exchange_trade",
@@ -142,7 +142,7 @@ export class Trade extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "type" })
-  type: TradeTypeEnum;
+  type: TradeType;
 
   /**
    * Free-form JSON to attach to the trade

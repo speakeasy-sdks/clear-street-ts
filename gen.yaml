@@ -2,14 +2,14 @@ configVersion: 1.0.0
 management:
   docChecksum: 66c80306755f3db4bf552950e09b47c6
   docVersion: 0.0.3
-  speakeasyVersion: 1.35.0
-  generationVersion: 2.31.0
+  speakeasyVersion: 1.37.5
+  generationVersion: 2.32.2
 generation:
   sdkClassName: clearStreet
   singleTagPerOp: false
   telemetryEnabled: false
 typescript:
-  version: 0.9.0
+  version: 0.10.0
   author: Clear Street
   maxMethodParams: 0
   packageName: clearStreet

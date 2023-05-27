@@ -6,29 +6,29 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export enum ErrorType {
-  Internal = "internal",
-  MalformedTrade = "malformed_trade",
-  TooManyTrades = "too_many_trades",
-  FileExists = "file_exists",
-  EmptyFile = "empty_file",
-  UnsupportedFile = "unsupported_file",
-  UploadNotFound = "upload_not_found",
-  TradeAlreadyCanceled = "trade_already_canceled",
-  MissingAccountId = "missing_account_id",
+    Internal = "internal",
+    MalformedTrade = "malformed_trade",
+    TooManyTrades = "too_many_trades",
+    FileExists = "file_exists",
+    EmptyFile = "empty_file",
+    UnsupportedFile = "unsupported_file",
+    UploadNotFound = "upload_not_found",
+    TradeAlreadyCanceled = "trade_already_canceled",
+    MissingAccountId = "missing_account_id",
 }
 
 /**
  * Bad Request
  */
 export class ErrorT extends SpeakeasyBase {
-  /**
-   * Error details, if any
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "message" })
-  message?: string;
+    /**
+     * Error details, if any
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "message" })
+    message?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: ErrorType;
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: ErrorType;
 }

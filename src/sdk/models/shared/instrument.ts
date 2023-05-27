@@ -9,41 +9,41 @@ import { Expose } from "class-transformer";
  * Identifier type.
  */
 export enum InstrumentIdentifierType {
-  Ticker = "ticker",
-  Cusip = "cusip",
-  Isin = "isin",
-  Sedol = "sedol",
+    Ticker = "ticker",
+    Cusip = "cusip",
+    Isin = "isin",
+    Sedol = "sedol",
 }
 
 /**
  * Instrument details.
  */
 export class Instrument extends SpeakeasyBase {
-  /**
-   * ISO 3166 Alpha-3 Country Code of where the instrument was traded
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "country" })
-  country: string;
+    /**
+     * ISO 3166 Alpha-3 Country Code of where the instrument was traded
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "country" })
+    country: string;
 
-  /**
-   * ISO 4217 Alpha-3 Currency Code of the currency in which the instrument is traded in
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "currency" })
-  currency: string;
+    /**
+     * ISO 4217 Alpha-3 Currency Code of the currency in which the instrument is traded in
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "currency" })
+    currency: string;
 
-  /**
-   * Official identifier. If you use `ticker`, then ensure you use a common ticker (e.g. `AAPL` for Apple Inc. on NASDAQ)
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "identifier" })
-  identifier: string;
+    /**
+     * Official identifier. If you use `ticker`, then ensure you use a common ticker (e.g. `AAPL` for Apple Inc. on NASDAQ)
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "identifier" })
+    identifier: string;
 
-  /**
-   * Identifier type.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "identifier_type" })
-  identifierType: InstrumentIdentifierType;
+    /**
+     * Identifier type.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "identifier_type" })
+    identifierType: InstrumentIdentifierType;
 }

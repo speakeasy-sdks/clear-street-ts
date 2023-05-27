@@ -11,29 +11,29 @@ import { AxiosInstance } from "axios";
  * Contains the list of servers available to the SDK
  */
 export const ServerList = [
-  /**
-   * Production server
-   */
-  "//api.clearstreet.io/v1",
-  /**
-   * Sandbox server
-   */
-  "//api.sandbox.clearstreet.io/v1",
-  "/",
+    /**
+     * Production server
+     */
+    "//api.clearstreet.io/v1",
+    /**
+     * Sandbox server
+     */
+    "//api.sandbox.clearstreet.io/v1",
+    "/",
 ] as const;
 
 /**
  * The available configuration options for the SDK
  */
 export type SDKProps = {
-  /**
-   * Allows overriding the default axios client used by the SDK
-   */
-  defaultClient?: AxiosInstance;
-  /**
-   * Allows overriding the default server URL used by the SDK
-   */
-  serverURL?: string;
+    /**
+     * Allows overriding the default axios client used by the SDK
+     */
+    defaultClient?: AxiosInstance;
+    /**
+     * Allows overriding the default server URL used by the SDK
+     */
+    serverURL?: string;
 };
 
 /**
@@ -104,52 +104,51 @@ export type SDKProps = {
  *
  */
 export class ClearStreet {
-  /**
-   * Trade endpoints are used to insert or cancel trades into a our systems.
-   *
-   * @remarks
-   *
-   */
-  public trades: Trades;
-  /**
-   * Upload endpoints allow you to upload a `CSV` file that contain trades, in the same format as our [trade-file specification](https://github.com/clear-street/docs/blob/master/trade_file.md). You may prefer to use a file-upload if you have a extremely large number of trades (> 10000), or if you have dependency on legacy systems that deal with `CSV` files. We recommend using trade endpoints when possible, especially for real-time trade reporting.
-   *
-   * @remarks
-   *
-   */
-  public uploads: Uploads;
+    /**
+     * Trade endpoints are used to insert or cancel trades into a our systems.
+     *
+     * @remarks
+     *
+     */
+    public trades: Trades;
+    /**
+     * Upload endpoints allow you to upload a `CSV` file that contain trades, in the same format as our [trade-file specification](https://github.com/clear-street/docs/blob/master/trade_file.md). You may prefer to use a file-upload if you have a extremely large number of trades (> 10000), or if you have dependency on legacy systems that deal with `CSV` files. We recommend using trade endpoints when possible, especially for real-time trade reporting.
+     *
+     * @remarks
+     *
+     */
+    public uploads: Uploads;
 
-  public _defaultClient: AxiosInstance;
-  public _securityClient: AxiosInstance;
-  public _serverURL: string;
-  private _language = "typescript";
-  private _sdkVersion = "0.10.0";
-  private _genVersion = "2.32.2";
-  private _globals: any;
+    public _defaultClient: AxiosInstance;
+    public _securityClient: AxiosInstance;
+    public _serverURL: string;
+    private _language = "typescript";
+    private _sdkVersion = "0.10.1";
+    private _genVersion = "2.32.7";
+    private _globals: any;
 
-  constructor(props?: SDKProps) {
-    this._serverURL = props?.serverURL ?? ServerList[0];
+    constructor(props?: SDKProps) {
+        this._serverURL = props?.serverURL ?? ServerList[0];
 
-    this._defaultClient =
-      props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
-    this._securityClient = this._defaultClient;
+        this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
+        this._securityClient = this._defaultClient;
 
-    this.trades = new Trades(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
+        this.trades = new Trades(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
 
-    this.uploads = new Uploads(
-      this._defaultClient,
-      this._securityClient,
-      this._serverURL,
-      this._language,
-      this._sdkVersion,
-      this._genVersion
-    );
-  }
+        this.uploads = new Uploads(
+            this._defaultClient,
+            this._securityClient,
+            this._serverURL,
+            this._language,
+            this._sdkVersion,
+            this._genVersion
+        );
+    }
 }

@@ -7,34 +7,32 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class GetByIdRequest extends SpeakeasyBase {
-  /**
-   * upload_id that identifies a previously created upload
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=upload_id",
-  })
-  uploadId: string;
+    /**
+     * upload_id that identifies a previously created upload
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=upload_id" })
+    uploadId: string;
 }
 
 export class GetByIdResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Not Found
-   */
-  @SpeakeasyMetadata()
-  error?: shared.ErrorT;
+    /**
+     * Not Found
+     */
+    @SpeakeasyMetadata()
+    error?: shared.ErrorT;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  uploadStatus?: shared.UploadStatus;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    uploadStatus?: shared.UploadStatus;
 }

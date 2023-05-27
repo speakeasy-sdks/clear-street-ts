@@ -12,142 +12,142 @@ import { Expose, Type } from "class-transformer";
  * Trade type.
  */
 export enum TradeType {
-  TransferTrade = "transfer_trade",
-  AllocationTrade = "allocation_trade",
-  ExchangeTrade = "exchange_trade",
-  BilateralTrade = "bilateral_trade",
+    TransferTrade = "transfer_trade",
+    AllocationTrade = "allocation_trade",
+    ExchangeTrade = "exchange_trade",
+    BilateralTrade = "bilateral_trade",
 }
 
 /**
  * Base trade details; common amongst all trade types.
  */
 export class Trade extends SpeakeasyBase {
-  /**
-   * Clear Street provided account_id that you want this trade booked to.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "account_id" })
-  accountId: number;
+    /**
+     * Clear Street provided account_id that you want this trade booked to.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "account_id" })
+    accountId: number;
 
-  /**
-   * AccountID for who this trade is behalf of
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "behalf_of_account_id" })
-  behalfOfAccountId?: number;
+    /**
+     * AccountID for who this trade is behalf of
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "behalf_of_account_id" })
+    behalfOfAccountId?: number;
 
-  /**
-   * DEPRECATED - Prefer behalf_of_account_id instead. EntityID for who this trade is behalf of
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "behalf_of_entity_id" })
-  behalfOfEntityId?: number;
+    /**
+     * DEPRECATED - Prefer behalf_of_account_id instead. EntityID for who this trade is behalf of
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "behalf_of_entity_id" })
+    behalfOfEntityId?: number;
 
-  /**
-   * The branch office submitting this trade, if any
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "branch_office" })
-  branchOffice?: string;
+    /**
+     * The branch office submitting this trade, if any
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "branch_office" })
+    branchOffice?: string;
 
-  /**
-   * The original trade id that is being canceled, if any
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "cancel_trade_id" })
-  cancelTradeId?: string;
+    /**
+     * The original trade id that is being canceled, if any
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "cancel_trade_id" })
+    cancelTradeId?: string;
 
-  /**
-   * Unique ID for this trade that you define.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "client_trade_id" })
-  clientTradeId: string;
+    /**
+     * Unique ID for this trade that you define.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "client_trade_id" })
+    clientTradeId: string;
 
-  /**
-   * Trade date for the trade in YYYYMMDD format
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "date" })
-  date: number;
+    /**
+     * Trade date for the trade in YYYYMMDD format
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "date" })
+    date: number;
 
-  /**
-   * Instrument details.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "instrument" })
-  @Type(() => Instrument)
-  instrument: Instrument;
+    /**
+     * Instrument details.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "instrument" })
+    @Type(() => Instrument)
+    instrument: Instrument;
 
-  /**
-   * The order id is to link all the executions in the avg price account(exchange and bi-lateral trade types) to the allocation trade type
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "order_id" })
-  orderId?: string;
+    /**
+     * The order id is to link all the executions in the avg price account(exchange and bi-lateral trade types) to the allocation trade type
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "order_id" })
+    orderId?: string;
 
-  /**
-   * The price of the trade
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "price" })
-  price: string;
+    /**
+     * The price of the trade
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "price" })
+    price: string;
 
-  /**
-   * The quantity of the trade
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "quantity" })
-  quantity: string;
+    /**
+     * The quantity of the trade
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "quantity" })
+    quantity: string;
 
-  /**
-   * The registered rep for this trade, if any
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "registered_rep" })
-  registeredRep?: string;
+    /**
+     * The registered rep for this trade, if any
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "registered_rep" })
+    registeredRep?: string;
 
-  /**
-   * Settlement details. Required typically for special settlement situations.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "settlement" })
-  @Type(() => Settlement)
-  settlement?: Settlement;
+    /**
+     * Settlement details. Required typically for special settlement situations.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "settlement" })
+    @Type(() => Settlement)
+    settlement?: Settlement;
 
-  /**
-   * Trade direction, either buy or sell with qualifiers
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "side" })
-  @Type(() => Side)
-  side: Side;
+    /**
+     * Trade direction, either buy or sell with qualifiers
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "side" })
+    @Type(() => Side)
+    side: Side;
 
-  /**
-   * True if this trade was solicited
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "solicited" })
-  solicited?: boolean;
+    /**
+     * True if this trade was solicited
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "solicited" })
+    solicited?: boolean;
 
-  /**
-   * Timestamp of when the trade occurred in milliseconds since unix epoch.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "timestamp" })
-  timestamp: number;
+    /**
+     * Timestamp of when the trade occurred in milliseconds since unix epoch.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "timestamp" })
+    timestamp: number;
 
-  /**
-   * Trade type.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "type" })
-  type: TradeType;
+    /**
+     * Trade type.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type: TradeType;
 
-  /**
-   * Free-form JSON to attach to the trade
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "user_data" })
-  userData?: Record<string, any>;
+    /**
+     * Free-form JSON to attach to the trade
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "user_data" })
+    userData?: Record<string, any>;
 }

@@ -7,44 +7,38 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class CancelTradesRequest extends SpeakeasyBase {
-  /**
-   * Provide only if `is_client_trade_id` is true. This is the account_id the trade was booked to
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=account_id",
-  })
-  accountId?: number;
+    /**
+     * Provide only if `is_client_trade_id` is true. This is the account_id the trade was booked to
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=account_id" })
+    accountId?: number;
 
-  /**
-   * True if the given trade_id is a client_trade_id
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=is_client_trade_id",
-  })
-  isClientTradeId?: boolean;
+    /**
+     * True if the given trade_id is a client_trade_id
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=is_client_trade_id" })
+    isClientTradeId?: boolean;
 
-  /**
-   * Clear Street assigned unique trade_id
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=trade_id",
-  })
-  tradeId: string;
+    /**
+     * Clear Street assigned unique trade_id
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=trade_id" })
+    tradeId: string;
 }
 
 export class CancelTradesResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  /**
-   * Bad Request
-   */
-  @SpeakeasyMetadata()
-  error?: shared.ErrorT;
+    /**
+     * Bad Request
+     */
+    @SpeakeasyMetadata()
+    error?: shared.ErrorT;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

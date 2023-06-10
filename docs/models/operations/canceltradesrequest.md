@@ -1,0 +1,10 @@
+# CancelTradesRequest
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `accountId`                                                                                  | *number*                                                                                     | :heavy_minus_sign:                                                                           | Provide only if `is_client_trade_id` is true. This is the account_id the trade was booked to |
+| `isClientTradeId`                                                                            | *boolean*                                                                                    | :heavy_minus_sign:                                                                           | True if the given trade_id is a client_trade_id                                              |
+| `tradeId`                                                                                    | *string*                                                                                     | :heavy_check_mark:                                                                           | Clear Street assigned unique trade_id                                                        |

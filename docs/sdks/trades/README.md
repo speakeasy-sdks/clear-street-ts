@@ -35,6 +35,19 @@ sdk.trades.cancel({
 });
 ```
 
+### Parameters
+
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [operations.CancelTradesRequest](../../models/operations/canceltradesrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
+
+
+### Response
+
+**Promise<[operations.CancelTradesResponse](../../models/operations/canceltradesresponse.md)>**
+
+
 ## create
 
 Insert the provided trades atomically. Use this endpoint if you want atomicity and immediate confirmation; this request will either fully process all your trades, or reject them all atomically. Therefore, a successful call to this endpoint guarantees that your trades have been accepted by our systems. This endpoint can accept up to 1000 trades at a time. 
@@ -106,54 +119,14 @@ sdk.trades.create([
     solicited: false,
     timestamp: 1545952392000,
     type: TradeType.AllocationTrade,
-    userData: {
-      "debitis": "ipsa",
-      "delectus": "tempora",
-    },
+    userData: {},
   },
   {
     accountId: 1002,
     behalfOfAccountId: 1002,
     behalfOfEntityId: 1002,
-    branchOffice: "suscipit",
-    cancelTradeId: "molestiae",
-    clientTradeId: "T-50264430-bc41",
-    date: 20200101,
-    instrument: {
-      country: "USA",
-      currency: "USD",
-      identifier: "AAPL",
-      identifierType: InstrumentIdentifierType.Sedol,
-    },
-    orderId: "placeat",
-    price: "10.00",
-    quantity: "100",
-    registeredRep: "voluptatum",
-    settlement: {
-      currency: "USD",
-      date: 479977,
-    },
-    side: {
-      direction: SideDirection.Sell,
-      position: SidePosition.Close,
-      qualifier: SideQualifier.Short,
-    },
-    solicited: false,
-    timestamp: 1545952392000,
-    type: TradeType.AllocationTrade,
-    userData: {
-      "temporibus": "ab",
-      "quis": "veritatis",
-      "deserunt": "perferendis",
-      "ipsam": "repellendus",
-    },
-  },
-  {
-    accountId: 1002,
-    behalfOfAccountId: 1002,
-    behalfOfEntityId: 1002,
-    branchOffice: "sapiente",
-    cancelTradeId: "quo",
+    branchOffice: "magnam",
+    cancelTradeId: "debitis",
     clientTradeId: "T-50264430-bc41",
     date: 20200101,
     instrument: {
@@ -162,13 +135,13 @@ sdk.trades.create([
       identifier: "AAPL",
       identifierType: InstrumentIdentifierType.Ticker,
     },
-    orderId: "at",
+    orderId: "delectus",
     price: "10.00",
     quantity: "100",
-    registeredRep: "at",
+    registeredRep: "tempora",
     settlement: {
       currency: "USD",
-      date: 978619,
+      date: 383441,
     },
     side: {
       direction: SideDirection.Sell,
@@ -178,12 +151,39 @@ sdk.trades.create([
     solicited: false,
     timestamp: 1545952392000,
     type: TradeType.BilateralTrade,
-    userData: {
-      "esse": "totam",
-      "porro": "dolorum",
-      "dicta": "nam",
-      "officia": "occaecati",
+    userData: {},
+  },
+  {
+    accountId: 1002,
+    behalfOfAccountId: 1002,
+    behalfOfEntityId: 1002,
+    branchOffice: "placeat",
+    cancelTradeId: "voluptatum",
+    clientTradeId: "T-50264430-bc41",
+    date: 20200101,
+    instrument: {
+      country: "USA",
+      currency: "USD",
+      identifier: "AAPL",
+      identifierType: InstrumentIdentifierType.Cusip,
     },
+    orderId: "excepturi",
+    price: "10.00",
+    quantity: "100",
+    registeredRep: "nisi",
+    settlement: {
+      currency: "USD",
+      date: 925597,
+    },
+    side: {
+      direction: SideDirection.Sell,
+      position: SidePosition.LessThanNilGreaterThan,
+      qualifier: SideQualifier.Short,
+    },
+    solicited: false,
+    timestamp: 1545952392000,
+    type: TradeType.TransferTrade,
+    userData: {},
   },
 ]).then((res: CreateTradesResponse) => {
   if (res.statusCode == 200) {
@@ -191,3 +191,16 @@ sdk.trades.create([
   }
 });
 ```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [shared.Trade[]](../../models//.md)                          | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.CreateTradesResponse](../../models/operations/createtradesresponse.md)>**
+

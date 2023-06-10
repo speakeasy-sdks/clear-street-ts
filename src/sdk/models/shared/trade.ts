@@ -19,6 +19,11 @@ export enum TradeType {
 }
 
 /**
+ * Free-form JSON to attach to the trade
+ */
+export class TradeUserData extends SpeakeasyBase {}
+
+/**
  * Base trade details; common amongst all trade types.
  */
 export class Trade extends SpeakeasyBase {
@@ -149,5 +154,6 @@ export class Trade extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "user_data" })
-    userData?: Record<string, any>;
+    @Type(() => TradeUserData)
+    userData?: TradeUserData;
 }

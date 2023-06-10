@@ -50,16 +50,16 @@ sdk.trades.cancel({
 ## Available Resources and Operations
 
 
-### [trades](docs/trades/README.md)
+### [trades](docs/sdks/trades/README.md)
 
-* [cancel](docs/trades/README.md#cancel) - Cancel Trade By ID
-* [create](docs/trades/README.md#create) - Insert Trades
+* [cancel](docs/sdks/trades/README.md#cancel) - Cancel Trade By ID
+* [create](docs/sdks/trades/README.md#create) - Insert Trades
 
-### [uploads](docs/uploads/README.md)
+### [uploads](docs/sdks/uploads/README.md)
 
-* [cancel](docs/uploads/README.md#cancel) - Create_Uploads
-* [create](docs/uploads/README.md#create) - Create Insert Upload
-* [getById](docs/uploads/README.md#getbyid) - Get Upload By ID
+* [cancel](docs/sdks/uploads/README.md#cancel) - Create_Uploads
+* [create](docs/sdks/uploads/README.md#create) - Create Insert Upload
+* [getById](docs/sdks/uploads/README.md#getbyid) - Get Upload By ID
 <!-- End SDK Available Operations -->
 
 ### Maturity
